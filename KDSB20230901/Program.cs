@@ -58,11 +58,10 @@ app.MapPut("/producto/{id}", (int id, Producto product) =>
 
 });
 
-//Delete
 app.MapDelete("/producto/{id}", (int id) =>
 {
     var existingProduct = producto.FirstOrDefault(c => c.Id == id);
-    if (existingProduct == null)
+    if (existingProduct != null)
     {
         producto.Remove(existingProduct);
         return Results.Ok();
